@@ -6,7 +6,10 @@ var router = require('./routes')
 
 var app = express()
 
-module.exports = app
+module.exports = function (db) {
+  app.set('db', db)
+  return app
+}
 
 // Middleware
 app.engine('hbs', hbs({

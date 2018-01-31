@@ -2,14 +2,36 @@ var express = require('express')
 var app = express()
 var router = express.Router()
 
-router.get('/', function (req,res) {
-  //startGame()
+// router.get('/', function (req,res) {
+//   //startGame()
   
-  res.render('home', data)
+//   res.render('home')
+// })
+
+router.get('/quiz', function (req, res) {
+  //
+  // var newId=20002
+  var db = req.app.get('db')
+
+    db('80s_qs')
+      .join('80s_answs', '80s_qs.id', '80s_answs.80s_q_id')
+      .where('80s_q_id', 20002)
+      .then((data) => {
+        res.render('quiz', {question1: data[0], data})
+      })
+
 })
 
-router.get('/', function (req, res) {
-  //
+router.post('/quiz', function (req, res) {
+  var answerChosen = req.body.answer
+  var db = req.app.get('db')
+
+  if (answerChosen.isCorrect) {
+   score+=5
+  } else score-=2
+
+  loadnextquestion
+
 })
 
 
