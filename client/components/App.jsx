@@ -1,9 +1,13 @@
 import React from 'react'
+import Quiz from './Quiz'
 
 const App = () => {
   return (
-    <h1>React development has begun!</h1>
-  )
+    <div>
+      <h1>Comma Chameleon </h1>
+      <Quiz />
+    </div>
+   )
 }
 
 export default App
