@@ -2,7 +2,7 @@ import React from 'react'
 import Quiz from './Quiz'
 import CommaGame from './CommaGame'
 
-class Quiz extends React.Component{
+class App extends React.Component{
 constructor(props) {
   super(props);
   
@@ -13,15 +13,15 @@ constructor(props) {
     timer: 0
   }
 
-function setTimer
+// function setTimer
 
 
-function startGame 
+// function startGame 
 
-// when comma is pressed, start game and song
+// // when comma is pressed, start game and song
 
 
-function startCommaGame
+// function startCommaGame
 // when timer hits a certain number, play commagame
   
 
@@ -29,13 +29,14 @@ function startCommaGame
 
 
 
-render() {
+render(){
   return (
     <div>
       <h1>Comma Chameleon </h1>
       <Quiz />
     </div>
    )
+  }
 }
-
+}
 export default App
