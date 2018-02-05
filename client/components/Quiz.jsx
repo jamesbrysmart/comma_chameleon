@@ -12,13 +12,12 @@ class Quiz extends React.Component{
     question: 'why is the sky blue?',
     answerOptions: ['a','b','c', 'd'],
     answer: 'a',
-    answerChecked:''
+    answerChecked:'',
     score: 0 
    }
 
    function runQuiz() {
-     if answerChecked==answer
-     score++
+     if (answerChecked==answer) score++
    }
 
 // function pickRandomQ (arr) {
@@ -53,9 +52,10 @@ class Quiz extends React.Component{
 // }
 
 
-  render() 
+  function render() {
     return (
       <div className='quiz'>
+      
         <Questions question={this.state.question} />
         
         <Answers answerOptions={this.state.answerOptions} answer={this.state.answer}/>
@@ -63,6 +63,7 @@ class Quiz extends React.Component{
       </div>  
     )
   
+}
 }
 }
 export default Quiz

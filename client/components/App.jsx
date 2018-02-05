@@ -29,7 +29,7 @@ constructor(props) {
 
 
 
-render(){
+function render() {
   return (
     <div>
       <h1>Comma Chameleon </h1>
