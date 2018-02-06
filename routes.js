@@ -1,6 +1,32 @@
-var express = require('express')
-var app = express()
-var router = express.Router()
+const express = require('express')
+const app = express()
+const router = express.Router()
+const db = require('./db')
+
+router.get('/', (req, res) => {
+  db.get80sAs()
+    .then(answers => {
+      res.json({answers:answers})
+      
+    })
+    .catch(err => {
+      res.status(500).send('DATABASE ERROR: ' + err.message)
+})
+})
+
+router.get('/', (req, res) => {
+  db.get80sQs()
+    .then(questions => {
+      res.json({questions:questions})
+      
+    })
+    .catch(err => {
+      res.status(500).send('DATABASE ERROR: ' + err.message)
+})
+})
+
+
+
 
 // router.get('/', function (req,res) {
 //   //startGame()

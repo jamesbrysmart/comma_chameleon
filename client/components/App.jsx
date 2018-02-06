@@ -3,16 +3,25 @@ import Quiz from './Quiz'
 import CommaGame from './CommaGame'
 
 class App extends React.Component{
-constructor(props) {
-  super(props);
-  
-  this.state = {
-    count: 0,
-    quizPlaying: false,
-    commaGamePlaying:false,
-    timer: 0
+  constructor(props) {
+    super(props);
+    
+    this.state = {
+      count: 0,
+      quizPlaying: false,
+      commaGamePlaying:false,
+      timer: 0
+    }
   }
-
+  render() {
+    return (
+      <div>
+        <h1>Comma Chameleon </h1>
+        <Quiz />
+      </div>
+    )
+  }
+}
 // function setTimer
 
 
@@ -29,14 +38,4 @@ constructor(props) {
 
 
 
-function render() {
-  return (
-    <div>
-      <h1>Comma Chameleon </h1>
-      <Quiz />
-    </div>
-   )
-  }
-}
-}
 export default App

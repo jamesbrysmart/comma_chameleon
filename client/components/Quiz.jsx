@@ -3,22 +3,42 @@ import Questions from './Questions'
 import Answers from './Answers'
 import Score from './Score'
 
+import {getQuestions} from '../api'
+
 class Quiz extends React.Component{
   constructor(props) {
-  super(props);
+    super(props);
+    this.state = {
+      question: 'why is the sky blue?',
+      answerOptions: ['a','b','c', 'd'],
+      answer: 'a',
+      answerChecked:'',
+      score: 0 
+    }
+  }
 
-   this.state = {
-// playing state here or in app? also stops at various points in game
-    question: 'why is the sky blue?',
-    answerOptions: ['a','b','c', 'd'],
-    answer: 'a',
-    answerChecked:'',
-    score: 0 
-   }
 
-   function runQuiz() {
-     if (answerChecked==answer) score++
-   }
+  //array of questions
+
+
+
+  
+
+
+  render() {
+    return (
+      <div className='quiz'>
+        <Questions question={this.state.question} />
+        <Answers answerOptions={this.state.answerOptions} answer={this.state.answer}/>
+      </div>  
+    )
+  }
+
+  runQuiz() {
+    // if (answerChecked==answer) score++
+  }
+
+}
 
 // function pickRandomQ (arr) {
 //return arr[Math.floor(Math.random) * arr.length]
@@ -52,18 +72,4 @@ class Quiz extends React.Component{
 // }
 
 
-  function render() {
-    return (
-      <div className='quiz'>
-      
-        <Questions question={this.state.question} />
-        
-        <Answers answerOptions={this.state.answerOptions} answer={this.state.answer}/>
-        
-      </div>  
-    )
-  
-}
-}
-}
 export default Quiz
