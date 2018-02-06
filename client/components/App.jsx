@@ -12,12 +12,20 @@ class App extends React.Component{
       commaGamePlaying:false,
       timer: 0
     }
+    this.startGame = this.startGame.bind(this)
   }
+
+  startGame (){
+    this.setState({
+      quizPlaying: true
+    })
+  }
+
   render() {
     return (
       <div>
         <h1>Comma Chameleon </h1>
-        <Quiz />
+        {this.state.quizPlaying && <Quiz />
       </div>
     )
   }
@@ -25,7 +33,7 @@ class App extends React.Component{
 // function setTimer
 
 
-// function startGame 
+
 
 // // when comma is pressed, start game and song
 
