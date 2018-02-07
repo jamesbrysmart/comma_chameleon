@@ -3,13 +3,13 @@ import Questions from './Questions'
 import Answers from './Answers'
 import Score from './Score'
 
-import {pickQuestion} from '../api'
+import {pickQuestion, getAnswers} from '../api'
 
 class Quiz extends React.Component{
   constructor(props) {
     super(props);
     this.state = {
-      question: 'why is the sky blue?',
+      question: '',
       answerOptions: ['a','b','c', 'd'],
       answer: 'a',
       answerChecked:'',
@@ -17,36 +17,44 @@ class Quiz extends React.Component{
       counter: 0,
       questionId: 0 
     }
-    this.pickRandom=this.pickRandom.bind(this)
+    this.renderQuestion=this.renderQuestion.bind(this)
+    this.renderAnswerOptions=this.renderAnswerOptions.bind(this)
   }
 
-  renderQuestion(question) {
+  renderQuestion(question, id) {
     this.setState({question: question, 
                    questionId: id})
   }
+
+  renderAnswerOptions(answerOptions, answer) {
+    this.setState({answerOptions: answerOptions, 
+                   answer: answer})
   //array of questions
+    }
+  
+  componentWillMount() {
+    pickQuestion(this.renderQuestion)
   
   }
 
-  
-  componentDidMount()
-    pickQuestion(this.renderQuestion)
-
+  componentDidMount() {
+    getAnswers(this.renderAnswerOptions,this.state.questionId)
+  }
 
   render() {
     return (
       <div className='quiz'>
-        <Questions question={this.state.question} />
+        <Questions question={this.state.question} id={this.state.questionId} />
         <Answers answerOptions={this.state.answerOptions} answer={this.state.answer}/>
       </div>  
     )
   }
-
-  runQuiz() {
-    // if (answerChecked==answer) score++
-  }
-
 }
+//   runQuiz() {
+//     // if (answerChecked==answer) score++
+//   }
+
+// }
 
 // setNextQuestion() {
 //   const counter = this.state.counter + 1;

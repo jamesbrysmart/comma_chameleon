@@ -6,7 +6,7 @@ function Questions(props){
   // need state to be able to turn off during commagame - or does it if state is in quiz?
     return (
     // or this. props .question? how to know which to use?
-    <h2 className ='Question'>{props.question}</h2>
+    <h2 className ='Question'>{props.question}{props.id}</h2>
     )
   }
 

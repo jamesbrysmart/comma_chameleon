@@ -3,16 +3,16 @@ const config = require('./knexfile')[environment]
 const connection = require('knex')(config)
 
 module.exports = {
-  get80sQs,
-  get80sAs
+  getAnswers,
+  getQuestions
 }
 
-function get80sAs (testDb) {
+function getAnswers (testDb) {
   const db = testDb || connection
-  return db('80s_answs').select()
+  return db('answers').select()
 }
 
-function get80sQs (testDb) {
+function getQuestions (testDb) {
   const db = testDb || connection
-  return db('80s_qs').select()
+  return db('questions').select()
 }

@@ -8,24 +8,27 @@ class App extends React.Component{
     
     this.state = {
       count: 0,
-      quizPlaying: false,
+      quizPlaying: true,
       commaGamePlaying:false,
       timerRunning: false,
       timer: 0
     }
-    this.startGame = this.startGame.bind(this)
-    this.setTimer
+    // this.startGame = this.startGame.bind(this)
+    // this.setTimer = this.setTimer.bind(this)
   }
 
-  startGame (e){ 
-    if (e.keydown ==188) // do I need a prevent default to make sure stops happening?
-    this.setState({
-      quizPlaying: true,
-      timerRunning: true
-    })
-  }
+  // startGame (e){ 
+  //   if (e.keydown ==188) // do I need a prevent default to make sure stops happening?
+  //   this.setState({
+  //     quizPlaying: true,
+  //     timerRunning: true
+  //   })
+  // }
 
-  // setTimer ()
+  // componentDidMount ()
+  // startGame(this.event)
+
+  // setTimer () when timer == 100 quiz playing turns to false, commagame to true
 
   render() {
     return (
