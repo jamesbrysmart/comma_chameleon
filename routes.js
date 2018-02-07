@@ -3,7 +3,7 @@ const app = express()
 const router = express.Router()
 const db = require('./db')
 
-router.get('/', (req, res) => {
+router.get('/80sAs', (req, res) => {
   db.get80sAs()
     .then(answers => {
       res.json({answers:answers})
@@ -14,17 +14,15 @@ router.get('/', (req, res) => {
 })
 })
 
-router.get('/', (req, res) => {
+router.get('/80sQs', (req, res) => {
   db.get80sQs()
     .then(questions => {
       res.json({questions:questions})
-      
     })
     .catch(err => {
       res.status(500).send('DATABASE ERROR: ' + err.message)
 })
 })
-
 
 
 

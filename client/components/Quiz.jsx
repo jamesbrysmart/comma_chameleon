@@ -3,7 +3,7 @@ import Questions from './Questions'
 import Answers from './Answers'
 import Score from './Score'
 
-import {getQuestions} from '../api'
+import {pickQuestion} from '../api'
 
 class Quiz extends React.Component{
   constructor(props) {
@@ -13,16 +13,24 @@ class Quiz extends React.Component{
       answerOptions: ['a','b','c', 'd'],
       answer: 'a',
       answerChecked:'',
-      score: 0 
+      score: 0,
+      counter: 0,
+      questionId: 0 
     }
+    this.pickRandom=this.pickRandom.bind(this)
   }
 
-
+  renderQuestion(question) {
+    this.setState({question: question, 
+                   questionId: id})
+  }
   //array of questions
-
-
+  
+  }
 
   
+  componentDidMount()
+    pickQuestion(this.renderQuestion)
 
 
   render() {
@@ -40,6 +48,16 @@ class Quiz extends React.Component{
 
 }
 
+// setNextQuestion() {
+//   const counter = this.state.counter + 1;
+//     const questionId = this.state.questionId + 1;
+//     this.setState({
+//       counter: counter,
+//       questionId: questionId, //refer to quiz help
+//     }
+//       // getQuestion - 
+// }
+// }
 // function pickRandomQ (arr) {
 //return arr[Math.floor(Math.random) * arr.length]
 // }
