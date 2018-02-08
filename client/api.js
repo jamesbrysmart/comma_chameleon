@@ -8,14 +8,15 @@ export function pickQuestion (callback) {
   request
     .get(questionsUrl)
     .then(items => { 
-    let data = JSON.parse(items.text)
+    let data = items.body
     let questionObj = pickRandom(data.questions)
     callback(questionObj.question, questionObj.id)
     })
   }
 
 function pickRandom(arr){
-  return arr[Math.floor(Math.random()*arr.length)]
+  let randomIndex= Math.floor(Math.random()*arr.length)
+  return arr[randomIndex]
 }
 
 function findCorrect(arr){
@@ -26,9 +27,8 @@ export function getAnswers(callback, id) {
   request
     .get(answersUrl)
     .then(items => {
-      let data = JSON.parse(items.text)
-      console.log(id)
-    //  var newArr = data.answers.filter(answer, id => id == answer.q_id)
+      let data = items.body
+      var newArr = data.answers.filter(answer => id == answer.q_id)
        var correctAnswer = findCorrect(newArr)
        callback(newArr, correctAnswer)     
   })

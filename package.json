@@ -7,7 +7,7 @@
   "author": "James Bryant",
   "license": "MIT",
   "scripts": {
-    "debug": "nodemon --inspect server/index --ignore data.json",
+    "debug": "nodemon --inspect server/index",
     "test": "jest --watch --noStackTrace",
     "start": "node server & webpack --watch",
     "knex": "knex"

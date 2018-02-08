@@ -1,6 +1,8 @@
 body {
-  background-color: rgba(7, 110, 7, 0.253)
+  background-color: hsl(100, 60%, 70%)
 }
 
 
 /* use css transition component
+
+//stretch, use green colour to show which is correct answer
