@@ -1,29 +1,24 @@
 import React from 'react'
 
 class CommaGame extends React.Component {
-  constructor(props) {
-    super(props)
-      this.state={
-        score:this.props.score
-      }
-    
-    
-    
-    
-    }
+      
 
-    CommaPress(e) {
-      if (e.keydown=='188')
-      score++
+
+
+  CommaPress() {
+     // if (e.keydown=='188')
+     console.log('hello')
+      this.props.addCommaScore()
     }
 
 
 
   
   
-  render() {
+render() {
     return (
-      <div class = 'comma' data-key='188'>
+      <div className = 'comma' data-key='188'>
+         <button onClick = {this.CommaPress.bind(this)}> , </button>
         <kbd> , </kbd>
       </div>
     )

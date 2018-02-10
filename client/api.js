@@ -1,8 +1,8 @@
 import request from 'superagent'
 
 const questionsUrl = 'http://localhost:3000/api/questions'
-
 const answersUrl = 'http://localhost:3000/api/answers'
+const scoresUrl = 'http://localhost:3000/api/scores'
 
 export function pickQuestion (callback) {
   request
@@ -32,9 +32,30 @@ export function getAnswers(callback, id) {
        var correctAnswer = findCorrect(newArr)
        callback(newArr, correctAnswer)     
   })
-    
-      //console.log(newArr)
-    }
+}
+
+export function getScores() {
+  request
+    .get(scoresUrl)
+    .then(items => {
+      let data=items.body
+      let scoreList=data.scores.sort()
+      callback(scoreList)
+
+    })
+}
+
+export function getLowestScore(arr) {
+  request
+    .get(scoresUrl)
+    .then(items => {
+      let data=items.body
+      let scoreList=data.scores.sort()
+// scoreList[0]
+//   callback(lowestScore)
+
+    })
+  }
   //arr.filter(answers => id==arr.q_id)}
 
 // export function updateScores(score) {

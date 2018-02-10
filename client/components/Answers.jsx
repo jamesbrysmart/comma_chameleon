@@ -2,7 +2,6 @@ import React from 'react'
 
 
 function Answers(props){
-  console.log(props)  
   return (
             <div className = 'answers'>
             {props.answerOptions.length > 0 && <ul className = "answerOptions">

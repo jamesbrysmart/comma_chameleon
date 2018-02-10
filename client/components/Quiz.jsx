@@ -12,49 +12,52 @@ class Quiz extends React.Component{
       question: '',
       answerOptions: [],
       answer: '',
-      checkedAnswer:'',
-      counter: 0,
+      correctAnswer:'',
       questionId: 0 
     }
     this.renderQuestion=this.renderQuestion.bind(this)
     this.renderAnswerOptions=this.renderAnswerOptions.bind(this)
     this.returnAnswer=this.returnAnswer.bind(this)
     this.checkIfCorrect=this.checkIfCorrect.bind(this)
+    
   }
 
   renderQuestion(question, id) {
     this.setState({question: question, 
-                   questionId: id})
+                   questionId: id, 
+                  })
     getAnswers(this.renderAnswerOptions,id)
   }
 
   renderAnswerOptions(answerOptions, answer) {
     this.setState({answerOptions: answerOptions, 
-                   answer: answer})
+                   correctAnswer: answer.answer})  
 
   //array of questions
     }
   
-  checkIfCorrect(){
-  if (this.state.checkedAnswer == this.state.answer) {
-    addToScore()
-    } else {
-    removeFromScore()
-    }
-    console.log('picknewquestion')
+  checkIfCorrect(answer){
+  if (this.state.correctAnswer == answer) {
+    this.props.addToScore()
+   } else {
+    this.props.minusScore()
+   }
+    //console.log('picknewquestion')
     pickQuestion(this.renderQuestion)
   }
 
-  returnAnswer(answer){
-
+  returnAnswer(pickedAnswer){
     this.setState({answerOptions: [], 
       answer: ''})
-   
+    this.checkIfCorrect(pickedAnswer)
+
     pickQuestion(this.renderQuestion)
     
     // console.log(answer)
     //  this.setState({checkedAnswer: answer})
      //settimer, then load next question
+
+     
   }
   
    
@@ -72,52 +75,5 @@ class Quiz extends React.Component{
     )
   }
 }
-//   runQuiz() {
-//     // if (answerChecked==answer) score++
-//   }
-
-// }
-
-// setNextQuestion() {
-//   const counter = this.state.counter + 1;
-//     const questionId = this.state.questionId + 1;
-//     this.setState({
-//       counter: counter,
-//       questionId: questionId, //refer to quiz help
-//     }
-//       // getQuestion - 
-// }
-// }
-// function pickRandomQ (arr) {
-//return arr[Math.floor(Math.random) * arr.length]
-// }
-
-// function pickRandom80sQ(props){
-//  let question = this.state.question
-//   var randomQ = pickRandomQ(props)
-//   this.setState(question)
-// }
-// takes array of questions, picks one randomly, prevents from being picked again
-// need to make sure ID is pulled, to match with answers ID
-
-
-// function findAnswers(arr){
-// var answerOptions = this.state.answerOptions  
-//var QId=this.state.question.id
-//   var answerOptions = arr.filter(answer => answer.id ==QId)
-// answerOptions.setState
-// }
-
-// function checkAnswer {
-//  if checkedAnswer == answer
-// return true
-
-// }
- 
-// function correctAnswer(data) {
-//   const answer = this.state.answer
-//   if (data.isCorrect ? this.setState
-// }
-
 
 export default Quiz
