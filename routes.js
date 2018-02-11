@@ -40,7 +40,7 @@ router.post('/', (req, res) => {
   .then(scoreIds => {
     res.json({scoreIds: {id:scoreIds[0]}}) //check why like this
   })
-}) 
+
   .catch(err => {
     res.status(500).send('DATABASE ERROR: ' + err.message)
   })

@@ -19,7 +19,6 @@ class App extends React.Component {
       gameOver: false,
       topScore: false,
       topScores: [],
-      username: ''
     }
 
     this.addToScore = this.addToScore.bind(this)
@@ -33,8 +32,8 @@ class App extends React.Component {
     this.renderScores = this.renderScores.bind(this)
     this.checkScore = this.checkScore.bind(this)
     this.isTopScore = this.isTopScore.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
-    this.handleChange = this.handleChange.bind(this);
+    this.refreshScores = this.refreshScores.bind(this)
+    
   }
 
 
@@ -67,8 +66,7 @@ class App extends React.Component {
 
   startGame(/*e*/) {
     const timer = setInterval(() => this.tickTimer(), 1000)
-    console.log(timer)
-    //if (e.keydown ==188) 
+      //if (e.keydown ==188) 
     this.setState({
       quizPlaying: true,
       timerRunning: true,
@@ -114,31 +112,29 @@ class App extends React.Component {
   }
   }
 
-  handleSubmit(event){
-  event.preventDefault()
-     {}
+  refreshScores(){
+    
+    this.setState({topScore:false})
+    this.fetchScores()
+    console.log('ahoy')
   }
-
+  
   componentWillMount() {
     this.fetchScores()
   }
 
-  handleChange(event) {
-    this.setState({username: event.target.value});
-  } 
 
   defineIntervals() {
     setTimeout(() => this.playCommaGame(), 5000)
-    setTimeout(() => this.playQuiz(), 10000)
+    // setTimeout(() => this.playQuiz(), 12000)
     //  setTimeout(() => this.playCommaGame(),15000)
     //  setTimeout(() => this.playQuiz(),129000)
     //  setTimeout(() => this.playCommaGame(),170000)
     //  setTimeout(() => this.getResults(),170000)
-    setTimeout(() => this.getResults(), 12000)
+    setTimeout(() => this.getResults(), 15000)
     // console.log('hello')
     // this.playCommaGame()
   }
-
 
 
   render() {
@@ -156,7 +152,7 @@ class App extends React.Component {
         {this.state.commaGamePlaying && <CommaGame
           addCommaScore={this.addCommaScore} />}
         {this.state.gameOver && <Score score={this.state.count} topScores={this.state.topScores} />}
-        {this.state.topScore && <AddScore handleSubmit={this.handleSubmit} handleChange={this.handleSubmit}/>}
+        {this.state.topScore && <AddScore score={this.state.count} refreshScores={this.refreshScores}/>}
 
       </div>
     )
