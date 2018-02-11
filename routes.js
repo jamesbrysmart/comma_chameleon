@@ -33,4 +33,17 @@ router.get('/scores', (req, res) => {
     })
   })
 
+router.post('/', (req, res) => {
+  const newScore = req.body
+  console.log(newScore)
+  db.addScore(newScore)
+  .then(scoreIds => {
+    res.json({scoreIds: {id:scoreIds[0]}}) //check why like this
+  })
+}) 
+  .catch(err => {
+    res.status(500).send('DATABASE ERROR: ' + err.message)
+  })
+}) 
+
 module.exports = router

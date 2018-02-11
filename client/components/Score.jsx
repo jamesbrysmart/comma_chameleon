@@ -1,33 +1,33 @@
 import React from 'react'
 
-import {getScores, getLowestScore} from '../api'
-import AddScore from './AddScore'
+//import {getScores, getLowestScore} from '../api'
+//import AddScore from './AddScore'
 
 class Score extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      topScore:false,
-      topScores:[]
-    }
-    this.fetchScores = this.fetchScores.bind(this)
-    this.renderScores= this.renderScores.bind(this)
-  }
+  // constructor(props) {
+  //   super(props)
+  //   this.state = {
+  //     topScore:false,
+  //     topScores:[]
+  //   }
+  //   this.fetchScores = this.fetchScores.bind(this)
+  //   this.renderScores= this.renderScores.bind(this)
+  // }
 
 
-  fetchScores(){
-    getScores(this.renderScores)
-  }
+  // fetchScores(){
+  //   getScores(this.renderScores)
+  // }
 
-  renderScores(scores){
-    this.setState({topScores:scores})
-  }
+  // renderScores(scores){
+  //   this.setState({topScores:scores})
+  // }
 
 
 
-  componentWillMount(){
-    this.fetchScores()
-  }
+  // componentWillMount(){
+  //   this.fetchScores()
+  // }
   
 
   render() {
@@ -35,20 +35,12 @@ class Score extends React.Component {
       <div>
       <h2>{this.props.score}</h2>
       <ul className = 'topScores'>
-      {this.state.topScores.map(score => {
+      {this.props.topScores.map(score => {
         return [
           <li>{score.scores}: {score.username}</li>
         ]
         })}
       </ul>
-
-
-      {this.state.topScore && <AddScore />}
-      
-      <form>
-        <input type='text' />
-      </form>
-
       </div>
     )
   }

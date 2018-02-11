@@ -5,14 +5,16 @@ class CommaGame extends React.Component {
 
 
 
-  CommaPress() {
-     //if (this.e.keydown=='188')
+  CommaPress(e) {
+     //if (e.keydown=='188')
       this.props.addCommaScore()
     }
 
 
-
-  
+  componentDidMount(){
+    this.CommaPress.bind(this)
+  }
+ 
   
 render() {
     return (

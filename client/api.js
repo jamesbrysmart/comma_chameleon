@@ -44,7 +44,7 @@ export function getScores(callback) {
         return b.scores - a.scores
       })
       var topScores =[]
-      for (var i=0; i<9; i++) {
+      for (var i=0; i<10; i++) {
         topScores.push(scoreList[i])
       }
 
