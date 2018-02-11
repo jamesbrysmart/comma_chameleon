@@ -34,7 +34,7 @@ export function getAnswers(callback, id) {
   })
 }
 
-export function getScores() {
+export function getScores(callback) {
   request
     .get(scoresUrl)
     .then(items => {
@@ -56,6 +56,15 @@ export function getLowestScore(arr) {
 
     })
   }
+
+export function addScore(score) {
+  request
+  .post(scoresUrl)
+  .send(score)
+  .then(data => {
+    const returnedScore = data.body
+  })
+}  
   //arr.filter(answers => id==arr.q_id)}
 
 // export function updateScores(score) {

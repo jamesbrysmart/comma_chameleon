@@ -1,6 +1,7 @@
 import React from 'react'
 
-import {getScores, getLowestScore}
+import {getScores, getLowestScore} from '../api'
+import AddScore from './AddScore'
 
 class Score extends React.Component {
   constructor(props) {
@@ -8,15 +9,26 @@ class Score extends React.Component {
     this.state = {
       topScore:false,
       topScores:[]
-
     }
+    this.fetchScores = this.fetchScores.bind(this)
+    this.renderScores= this.renderScores.bind(this)
   }
 
-  //could well be stateful as 
+
+  fetchScores(){
+    getScores(this.renderScores)
+  }
+
+  renderScores(scores){
+    this.setState({topScores:scores})
+  }
 
 
 
-  ch
+  componentWillMount(){
+    this.fetchScores()
+  }
+  
 
   render() {
     return (
