@@ -6,8 +6,7 @@ class CommaGame extends React.Component {
 
 
   CommaPress() {
-     // if (e.keydown=='188')
-     console.log('hello')
+     //if (this.e.keydown=='188')
       this.props.addCommaScore()
     }
 

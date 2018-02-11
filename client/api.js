@@ -30,6 +30,7 @@ export function getAnswers(callback, id) {
       let data = items.body
       var newArr = data.answers.filter(answer => id == answer.q_id)
        var correctAnswer = findCorrect(newArr)
+      //  console.log(newArr)
        callback(newArr, correctAnswer)     
   })
 }
@@ -39,23 +40,22 @@ export function getScores(callback) {
     .get(scoresUrl)
     .then(items => {
       let data=items.body
-      let scoreList=data.scores.sort()
-      callback(scoreList)
+      let scoreList=data.scores.sort(function(a,b){
+        return b.scores - a.scores
+      })
+      var topScores =[]
+      for (var i=0; i<9; i++) {
+        topScores.push(scoreList[i])
+      }
+
+      callback(topScores)
 
     })
 }
 
-export function getLowestScore(arr) {
-  request
-    .get(scoresUrl)
-    .then(items => {
-      let data=items.body
-      let scoreList=data.scores.sort()
+
 // scoreList[0]
 //   callback(lowestScore)
-
-    })
-  }
 
 export function addScore(score) {
   request
