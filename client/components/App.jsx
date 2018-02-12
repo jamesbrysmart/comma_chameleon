@@ -129,12 +129,12 @@ class App extends React.Component {
 
   defineIntervals() {
     setTimeout(() => this.playCommaGame(), 5000)
-    // setTimeout(() => this.playQuiz(), 12000)
-    //  setTimeout(() => this.playCommaGame(),15000)
+    setTimeout(() => this.playQuiz(), 12000)
+    setTimeout(() => this.playCommaGame(),20000)
     //  setTimeout(() => this.playQuiz(),129000)
     //  setTimeout(() => this.playCommaGame(),170000)
     //  setTimeout(() => this.getResults(),170000)
-    setTimeout(() => this.getResults(), 15000)
+    setTimeout(() => this.getResults(), 30000)
     // console.log('hello')
     // this.playCommaGame()
   }
@@ -144,16 +144,16 @@ class App extends React.Component {
     const style={
       backgroundColor:`hsl(${this.state.count+100}, 60%, 70%)`
     }
-    document.body.style = {style}
+    
     return (
       <div className='app' style={style}>
         <div className = 'header'>
           <h1>Comma Chameleon </h1>
-        </div>
-        <div className='score'>  
           <h2>Score: {this.state.count}</h2>
-          <h3>Timer: {this.state.timer}</h3>
+          <img src='/images/chameleon.png' />
         </div>
+        <h3>Timer: {this.state.timer}</h3>
+        
         <div className = 'game'>
           <button onClick={this.startGame}> Start Game </button>
           {this.state.quizPlaying && <Quiz

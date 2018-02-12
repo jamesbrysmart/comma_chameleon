@@ -32,12 +32,13 @@ class Score extends React.Component {
 
   render() {
     return (
-      <div>
-      <h2>{this.props.score}</h2>
-      <ul className = 'topScores'>
+      <div className = 'topScores'>
+      <ul>
+      <h2>Your final score: {this.props.score}</h2>
+      <h3> Top Scores </h3>
       {this.props.topScores.map(score => {
         return [
-          <li>{score.scores}: {score.username}</li>
+          <h4>{score.scores} - {score.username} </h4> 
         ]
         })}
       </ul>
