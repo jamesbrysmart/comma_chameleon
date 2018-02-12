@@ -33,7 +33,7 @@ router.get('/scores', (req, res) => {
     })
   })
 
-router.post('/', (req, res) => {
+router.post('/scores', (req, res) => {
   const newScore = req.body
   console.log(newScore)
   db.addScore(newScore)

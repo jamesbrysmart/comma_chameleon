@@ -42,6 +42,7 @@ class Score extends React.Component {
         ]
         })}
       </ul>
+      <button onClick = {this.props.startGame}> Play again! </button>
       </div>
     )
   }

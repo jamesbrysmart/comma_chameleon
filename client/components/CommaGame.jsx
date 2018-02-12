@@ -34,8 +34,7 @@ render() {
     return (
       <div className='comma'>
          <button onClick = {this.props.addCommaScore}> , </button>
-        <kbd> , </kbd>
-        <input type="text"/>
+        <h3> Now, press the comma button as fast as you can! </h3>
       </div>
     )
   }

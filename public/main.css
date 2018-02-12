@@ -24,7 +24,7 @@ button {
   float: center;
 
 }
-.game{
+.container{
   max-width:1400px;
   margin: auto; 
   justify-content: center;
@@ -33,9 +33,13 @@ button {
   width: 600px;
   height: 600px;
   background-color: white;
-  padding:50px;
-  padding-top:50px
+  padding:50px; 
+  padding-top:50px;
   }
+
+.game{
+  padding:100px
+}
 
 img {
   float: right;

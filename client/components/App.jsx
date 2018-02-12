@@ -4,7 +4,8 @@ import CommaGame from './CommaGame'
 import Score from './Score'
 import { getScores } from '../api'
 import AddScore from './AddScore'
-import {Helmet} from 'react-helmet';
+import {Helmet} from 'react-helmet'
+import StartGame from './StartGame'
 
 class App extends React.Component {
   constructor(props) {
@@ -20,6 +21,7 @@ class App extends React.Component {
       gameOver: false,
       topScore: false,
       topScores: [],
+      beforeGame: true,
       //commaListen: false
     }
 
@@ -73,6 +75,7 @@ class App extends React.Component {
     this.setState({
       quizPlaying: true,
       timerRunning: true,
+      beforeGame:false
     })
     this.defineIntervals()
     setTimeout(() => clearInterval(timer), 240000)
@@ -91,7 +94,7 @@ class App extends React.Component {
     this.setState({
       quizPlaying: false,
       commaGamePlaying: false,
-      gameOver: true
+      gameOver:true
     })
     this.checkScore()
 
@@ -130,11 +133,11 @@ class App extends React.Component {
   defineIntervals() {
     setTimeout(() => this.playCommaGame(), 5000)
     setTimeout(() => this.playQuiz(), 12000)
-    setTimeout(() => this.playCommaGame(),20000)
+    setTimeout(() => this.playCommaGame(),15000)
     //  setTimeout(() => this.playQuiz(),129000)
     //  setTimeout(() => this.playCommaGame(),170000)
     //  setTimeout(() => this.getResults(),170000)
-    setTimeout(() => this.getResults(), 30000)
+    setTimeout(() => this.getResults(), 20000)
     // console.log('hello')
     // this.playCommaGame()
   }
@@ -154,14 +157,16 @@ class App extends React.Component {
         </div>
         <h3>Timer: {this.state.timer}</h3>
         
-        <div className = 'game'>
-          <button onClick={this.startGame}> Start Game </button>
-          {this.state.quizPlaying && <Quiz
-            addToScore={this.addToScore} minusScore={this.minusScore} addCommaScore={this.addCommaScore} />}
-          {this.state.commaGamePlaying && <CommaGame
-            addCommaScore={this.addCommaScore} />}
-          {this.state.gameOver && <Score score={this.state.count} topScores={this.state.topScores} />}
-          {this.state.topScore && <AddScore score={this.state.count} refreshScores={this.refreshScores}/>}
+        <div className = 'container'>
+          <div className='game'>
+            {this.state.beforeGame && <StartGame startGame={this.startGame}/>}
+            {this.state.quizPlaying && <Quiz
+              addToScore={this.addToScore} minusScore={this.minusScore} addCommaScore={this.addCommaScore} />}
+            {this.state.commaGamePlaying && <CommaGame
+              addCommaScore={this.addCommaScore} />}
+            {this.state.gameOver && <Score score={this.state.count} topScores={this.state.topScores} startGame={this.startGame} />}
+            {this.state.topScore && <AddScore score={this.state.count} refreshScores={this.refreshScores}/>}
+          </div> 
         </div>
       </div>
     )

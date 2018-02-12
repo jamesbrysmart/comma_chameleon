@@ -68,10 +68,9 @@ class Quiz extends React.Component{
   render() {
     return (
       <CSSTransitionGroup
-      className="container"
       component="div"
       transitionName="fade"
-      transitionEnterTimeout={800}
+      transitionEnterTimeout={500}
       transitionLeaveTimeout={500}
       transitionAppear
       transitionAppearTimeout={500}

@@ -63,7 +63,7 @@ export function addScore(score, callback) {
    .post(scoresUrl)
    .send(score)
    .end((err, res) => {
-     callback(err)
+     callback(res)
   })
 }  
   //arr.filter(answers => id==arr.q_id)}
