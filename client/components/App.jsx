@@ -4,6 +4,7 @@ import CommaGame from './CommaGame'
 import Score from './Score'
 import { getScores } from '../api'
 import AddScore from './AddScore'
+import {Helmet} from 'react-helmet';
 
 class App extends React.Component {
   constructor(props) {
@@ -19,11 +20,13 @@ class App extends React.Component {
       gameOver: false,
       topScore: false,
       topScores: [],
+      //commaListen: false
     }
 
     this.addToScore = this.addToScore.bind(this)
+    // this.commaListen = this.commaListen.bind(this)
     this.minusScore = this.minusScore.bind(this)
-    this.checkGameStatus = this.checkGameStatus.bind(this)
+    // this.checkGameStatus = this.checkGameStatus.bind(this)
     this.startGame = this.startGame.bind(this)
     this.playCommaGame = this.playCommaGame.bind(this)
     this.playQuiz = this.playQuiz.bind(this)
@@ -35,7 +38,7 @@ class App extends React.Component {
     this.refreshScores = this.refreshScores.bind(this)
     
   }
-
+  
 
   addToScore() {
     this.state.count += 5
@@ -49,13 +52,13 @@ class App extends React.Component {
     this.state.count++
   }
 
-  checkGameStatus() {
-    if (quizPlaying) {
-      pickQuestion(this.renderQuestion)
-    } else if (commaGamePlaying)
-      return
+  // checkGameStatus() {
+  //   if (quizPlaying) {
+  //     pickQuestion(this.renderQuestion)
+  //   } else if (commaGamePlaying)
+  //     return
 
-  }
+  //}
 
   tickTimer() {
     let { timer } = this.state
@@ -80,7 +83,7 @@ class App extends React.Component {
   }
 
   playQuiz() {
-    this.setState({ quizPlaying: true, commaGamePlaying: false }
+    this.setState({ quizPlaying: true, commaGamePlaying: false, commaListen: false }
     )
   }
 
@@ -138,22 +141,28 @@ class App extends React.Component {
 
 
   render() {
-    const backgroundColour = {
-      backgroundColor: `hsl((${this.state.count + 100}), 60% 70%)`
+    const style={
+      backgroundColor:`hsl(${this.state.count+100}, 60%, 70%)`
     }
+    document.body.style = {style}
     return (
-      <div style={backgroundColour}>
-        <h1>Comma Chameleon </h1>
-        <h2>Score: {this.state.count}</h2>
-        <h3>Timer: {this.state.timer}</h3>
-        <button onClick={this.startGame}> Start Game </button>
-        {this.state.quizPlaying && <Quiz
-          addToScore={this.addToScore} minusScore={this.minusScore} addCommaScore={this.addCommaScore} />}
-        {this.state.commaGamePlaying && <CommaGame
-          addCommaScore={this.addCommaScore} />}
-        {this.state.gameOver && <Score score={this.state.count} topScores={this.state.topScores} />}
-        {this.state.topScore && <AddScore score={this.state.count} refreshScores={this.refreshScores}/>}
-
+      <div className='app' style={style}>
+        <div className = 'header'>
+          <h1>Comma Chameleon </h1>
+        </div>
+        <div className='score'>  
+          <h2>Score: {this.state.count}</h2>
+          <h3>Timer: {this.state.timer}</h3>
+        </div>
+        <div className = 'game'>
+          <button onClick={this.startGame}> Start Game </button>
+          {this.state.quizPlaying && <Quiz
+            addToScore={this.addToScore} minusScore={this.minusScore} addCommaScore={this.addCommaScore} />}
+          {this.state.commaGamePlaying && <CommaGame
+            addCommaScore={this.addCommaScore} />}
+          {this.state.gameOver && <Score score={this.state.count} topScores={this.state.topScores} />}
+          {this.state.topScore && <AddScore score={this.state.count} refreshScores={this.refreshScores}/>}
+        </div>
       </div>
     )
   }

@@ -1,11 +1,15 @@
 import React from 'react'
 
 class CommaGame extends React.Component {
+
+  constructor(props) {
+    super(props)
       
-//this.handleCommaPress=this.handleCommaPress.bind(this)
+    this.handleCommaPress=this.handleCommaPress.bind(this)
+  }
 
 
-handleCommaPress(e) {
+  handleCommaPress(e) {
   console.log(e.key)
   // console.log('nuj')
   //    if (e.keydown=='188') {
@@ -14,21 +18,30 @@ handleCommaPress(e) {
   //   }
   }
 
- 
- 
+  componentDidMount() {
+    document.addEventListener('keydown', function(e){
+      console.log('nuj')
+      if (e.key==',') {
+        console.log('done')
+        this.props.addCommaScore()
+      }
+    });
+  }
+
+
   
 render() {
     return (
-      <div className='comma'
-      onKeyDown={(e) => this.handleCommaPress(e)} >
+      <div className='comma'>
          <button onClick = {this.props.addCommaScore}> , </button>
         <kbd> , </kbd>
+        <input type="text"/>
       </div>
     )
   }
   
   
-  }
+}
 
 
 
