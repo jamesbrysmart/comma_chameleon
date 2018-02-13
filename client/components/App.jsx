@@ -7,6 +7,7 @@ import AddScore from './AddScore'
 import {Helmet} from 'react-helmet'
 import StartGame from './StartGame'
 import Header from './Header'
+import AudioPlayer from './AudioPlayer'
 
 class App extends React.Component {
   constructor(props) {
@@ -23,6 +24,7 @@ class App extends React.Component {
       topScore: false,
       topScores: [],
       beforeGame: true,
+      songPlaying:false
       //commaListen: false
     }
 
@@ -76,7 +78,8 @@ class App extends React.Component {
     this.setState({
       quizPlaying: true,
       timerRunning: true,
-      beforeGame:false
+      beforeGame:false, 
+      songPlaying:true
     })
     this.defineIntervals()
     setTimeout(() => clearInterval(timer), 240000)
@@ -155,6 +158,7 @@ class App extends React.Component {
         <div className = 'container'>
           <div className='game'>
             {this.state.beforeGame && <StartGame startGame={this.startGame}/>}
+            {this.state.songPlaying && <AudioPlayer />}
             {this.state.quizPlaying && <Quiz
               addToScore={this.addToScore} minusScore={this.minusScore} addCommaScore={this.addCommaScore} />}
             {this.state.commaGamePlaying && <CommaGame
