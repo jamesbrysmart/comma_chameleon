@@ -34,12 +34,7 @@ exports.seed = function(knex, Promise) {
         knex('questions').insert({id: 20027, question: "What's Madonna's real name?", image_link: 'test5@gmail.com'}),
         knex('questions').insert({id: 20028, question: "MTV broadcast their first video in 1981 - what was it?", image_link: 'test5@gmail.com'}),
         knex('questions').insert({id: 20029, question: "What's the name of the lead singer of Duran Duran?", image_link: 'test5@gmail.com'}),
-        knex('questions').insert({id: 20030, question: "In 1986, thanks to The Bangles, what was America walking like?", image_link: 'test5@gmail.com'}),
-
-
-
-
-  
+        knex('questions').insert({id: 20030, question: "In 1986, thanks to The Bangles, what was America walking like?", image_link: 'test5@gmail.com'})
       ])
     })
 }

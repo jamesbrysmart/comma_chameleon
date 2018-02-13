@@ -122,11 +122,7 @@ exports.seed = function(knex, Promise) {
         {id: 12415, 'q_id': 20030, answer: "A Physician", isCorrect: false},
         {id: 12416, 'q_id': 20030, answer: "An Egyptian", isCorrect: true},
         {id: 12417, 'q_id': 20030, answer: "A Pelican", isCorrect: false},
-        {id: 12418, 'q_id': 20030, answer: "A Dinosaur", isCorrect: false},
-        
-
-
-
+        {id: 12418, 'q_id': 20030, answer: "A Dinosaur", isCorrect: false}
       ])
     )})
 }
