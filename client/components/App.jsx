@@ -6,6 +6,7 @@ import { getScores } from '../api'
 import AddScore from './AddScore'
 import {Helmet} from 'react-helmet'
 import StartGame from './StartGame'
+import Header from './Header'
 
 class App extends React.Component {
   constructor(props) {
@@ -150,13 +151,7 @@ class App extends React.Component {
     
     return (
       <div className='app' style={style}>
-        <div className = 'header'>
-          <h1>Comma Chameleon </h1>
-          <h2>Score: {this.state.count}</h2>
-          <img src='/images/chameleon.png' />
-        </div>
-        <h3>Timer: {this.state.timer}</h3>
-        
+        <Header currentScore={this.state.count}/> 
         <div className = 'container'>
           <div className='game'>
             {this.state.beforeGame && <StartGame startGame={this.startGame}/>}

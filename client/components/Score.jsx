@@ -32,16 +32,14 @@ class Score extends React.Component {
 
   render() {
     return (
-      <div className = 'topScores'>
-      <ul>
+      <div className = 'topScores'> 
       <h2>Your final score: {this.props.score}</h2>
       <h3> Top Scores </h3>
       {this.props.topScores.map(score => {
         return [
           <h4>{score.scores} - {score.username} </h4> 
         ]
-        })}
-      </ul>
+        })} 
       <button onClick = {this.props.startGame}> Play again! </button>
       </div>
     )
