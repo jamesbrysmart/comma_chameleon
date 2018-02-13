@@ -70,10 +70,7 @@ class Quiz extends React.Component{
       <CSSTransitionGroup
       component="div"
       transitionName="fade"
-      transitionEnterTimeout={500}
-      transitionLeaveTimeout={500}
-      transitionAppear
-      transitionAppearTimeout={500}
+      
     >
         <div key={this.state.questionId}>
           <Questions question={this.state.question} id={this.state.questionId} />

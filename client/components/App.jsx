@@ -51,7 +51,7 @@ class App extends React.Component {
   }
 
   minusScore() {
-    this.state.count -= 3
+    this.state.count -= 4
   }
 
   addCommaScore() {
@@ -86,7 +86,7 @@ class App extends React.Component {
       timer:0
     })
     this.defineIntervals()
-    setTimeout(() => clearInterval(timer), 240000)
+    setTimeout(() => clearInterval(timer), 238000)
   }
 
   playCommaGame() {
@@ -139,13 +139,12 @@ class App extends React.Component {
 
 
   defineIntervals() {
-    setTimeout(() => this.playCommaGame(), 5000)
-    setTimeout(() => this.playQuiz(), 12000)
-    setTimeout(() => this.playCommaGame(),19000)
-    //  setTimeout(() => this.playQuiz(),129000)
-    //  setTimeout(() => this.playCommaGame(),170000)
-    //  setTimeout(() => this.getResults(),170000)
-    setTimeout(() => this.getResults(), 25000)
+    setTimeout(() => this.playCommaGame(), 44000)
+    setTimeout(() => this.playQuiz(), 65000)
+    setTimeout(() => this.playCommaGame(),96000)
+    setTimeout(() => this.playQuiz(),118000)
+    setTimeout(() => this.playCommaGame(),169000)
+    setTimeout(() => this.getResults(), 238000)
     // console.log('hello')
     // this.playCommaGame()
   }

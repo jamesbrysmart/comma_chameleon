@@ -7,7 +7,7 @@ export default function Header(props){
     return (
     <div className = 'header' style={style}>
       <div className = 'score'>
-        <h2>Score: {props.currentScore} timer {props.timer}</h2>
+        <h2>Score: {props.currentScore}</h2>
 
       </div>
       <div className = 'title'>
