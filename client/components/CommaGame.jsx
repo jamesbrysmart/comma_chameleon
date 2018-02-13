@@ -1,30 +1,50 @@
 import React from 'react'
 
 class CommaGame extends React.Component {
+
+  constructor(props) {
+    super(props)
       
+    this.handleCommaPress=this.handleCommaPress.bind(this)
+  }
 
 
+  handleCommaPress(e) {
+  console.log(e.key)
+  // console.log('nuj')
+  //    if (e.keydown=='188') {
+  //      console.log('done')
+  //     this.props.addCommaScore()
+  //   }
+  }
 
-  CommaPress() {
-     //if (this.e.keydown=='188')
-      this.props.addCommaScore()
-    }
+  componentDidMount() {
+    document.addEventListener('keydown', function(e){
+      console.log(e)
+      console.log('nuj')
+      if (e.key==',') {
+        console.log('done')
+        this.props.addCommaScore()
+      }
+    });
+  }
 
 
-
-  
   
 render() {
+  const style={
+    backgroundColor:`hsl(${this.props.score+100}, 60%, 70%)`
+  }
     return (
-      <div className = 'comma' data-key='188'>
-         <button onClick = {this.CommaPress.bind(this)}> , </button>
-        <kbd> , </kbd>
+      <div className='commaGame'>
+         <button className='commaButton' style={style} onClick = {this.props.addCommaScore}> , </button>
+        <h3> Now, click the comma button as fast as you can! </h3>
       </div>
     )
   }
   
   
-  }
+}
 
 
 

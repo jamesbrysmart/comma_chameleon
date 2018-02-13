@@ -1,54 +1,22 @@
 import React from 'react'
-
-import {getScores, getLowestScore} from '../api'
 import AddScore from './AddScore'
+import TopScores from './TopScores'
+
+//import {getScores, getLowestScore} from '../api'
+//import AddScore from './AddScore'
 
 class Score extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      topScore:false,
-      topScores:[]
-    }
-    this.fetchScores = this.fetchScores.bind(this)
-    this.renderScores= this.renderScores.bind(this)
-  }
-
-
-  fetchScores(){
-    getScores(this.renderScores)
-  }
-
-  renderScores(scores){
-    this.setState({topScores:scores})
-  }
-
-
-
-  componentWillMount(){
-    this.fetchScores()
-  }
-  
 
   render() {
+    const style = {
+      backgroundColor: `hsl(${this.props.score + 100}, 60%, 70%)`
+    }
     return (
-      <div>
-      <h2>{this.props.score}</h2>
-      <ul className = 'topScores'>
-      {this.state.topScores.map(score => {
-        return [
-          <li>{score.scores}: {score.username}</li>
-        ]
-        })}
-      </ul>
-
-
-      {this.state.topScore && <AddScore />}
-      
-      <form>
-        <input type='text' />
-      </form>
-
+      <div className='finalScore'>
+        <h1>Your final score: {this.props.score}</h1>
+        {/* {this.props.topScore && TopScores /}  */}
+        {this.props.isTopScore ? <AddScore score={this.props.score} refreshScores={this.props.refreshScores} /> : <TopScores topScores={this.props.topScores} />}
+        <button style={style} className="playAgain" onClick={this.props.startGame}> Play again! </button>
       </div>
     )
   }

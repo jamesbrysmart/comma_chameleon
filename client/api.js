@@ -44,7 +44,7 @@ export function getScores(callback) {
         return b.scores - a.scores
       })
       var topScores =[]
-      for (var i=0; i<9; i++) {
+      for (var i=0; i<10; i++) {
         topScores.push(scoreList[i])
       }
 
@@ -57,12 +57,13 @@ export function getScores(callback) {
 // scoreList[0]
 //   callback(lowestScore)
 
-export function addScore(score) {
+export function addScore(score, callback) {
+  console.log(score)
   request
-  .post(scoresUrl)
-  .send(score)
-  .then(data => {
-    const returnedScore = data.body
+   .post(scoresUrl)
+   .send(score)
+   .end((err, res) => {
+     callback(res)
   })
 }  
   //arr.filter(answers => id==arr.q_id)}

@@ -5,7 +5,8 @@ const connection = require('knex')(config)
 module.exports = {
   getAnswers,
   getQuestions,
-  getScores
+  getScores,
+  addScore
 }
 
 function getAnswers (testDb) {
@@ -23,3 +24,7 @@ function getScores (testDb) {
   return db('scores').select()
 }
 
+function addScore (data, testDb) {
+  const db = testDb || connection
+  return db('scores').insert({username: data.name, scores:data.score}) 
+}

@@ -1,3 +1,5 @@
+
+import { CSSTransitionGroup } from 'react-transition-group'
 import React from 'react'
 import Questions from './Questions'
 import Answers from './Answers'
@@ -43,21 +45,18 @@ class Quiz extends React.Component{
     this.props.minusScore()
    }
     //console.log('picknewquestion')
-    pickQuestion(this.renderQuestion)
+    // pickQuestion(this.renderQuestion)
   }
 
   returnAnswer(pickedAnswer){
     this.setState({answerOptions: [], 
       answer: ''})
     this.checkIfCorrect(pickedAnswer)
-
-    pickQuestion(this.renderQuestion)
-    
+    setTimeout(() => pickQuestion(this.renderQuestion),300)
     // console.log(answer)
     //  this.setState({checkedAnswer: answer})
      //settimer, then load next question
 
-     
   }
   
    
@@ -68,10 +67,16 @@ class Quiz extends React.Component{
 
   render() {
     return (
-      <div className='quiz'>
-        <Questions question={this.state.question} id={this.state.questionId} />
-        <Answers answerOptions={this.state.answerOptions} answer={this.state.answer} returnAnswer = {this.returnAnswer}/>
-      </div>  
+      <CSSTransitionGroup
+      component="div"
+      transitionName="fade"
+      
+    >
+        <div key={this.state.questionId}>
+          <Questions question={this.state.question} id={this.state.questionId} />
+          <Answers answerOptions={this.state.answerOptions} answer={this.state.answer} returnAnswer = {this.returnAnswer}/>
+      </div>
+      </CSSTransitionGroup>  
     )
   }
 }
