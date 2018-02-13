@@ -51,7 +51,7 @@ class App extends React.Component {
   }
 
   minusScore() {
-    this.state.count -= 4
+    this.state.count -= 3
   }
 
   addCommaScore() {
