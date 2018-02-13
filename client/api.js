@@ -1,8 +1,8 @@
 import request from 'superagent'
 
-const questionsUrl = 'http://localhost:3001/api/questions'
-const answersUrl = 'http://localhost:3001/api/answers'
-const scoresUrl = 'http://localhost:3001/api/scores'
+const questionsUrl = 'http://localhost:3000/api/questions'
+const answersUrl = 'http://localhost:3000/api/answers'
+const scoresUrl = 'http://localhost:3000/api/scores'
 
 export function pickQuestion (callback) {
   request

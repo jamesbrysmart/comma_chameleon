@@ -79,7 +79,8 @@ class App extends React.Component {
       quizPlaying: true,
       timerRunning: true,
       beforeGame:false, 
-      songPlaying:true
+      songPlaying:true,
+      gameOver: false
     })
     this.defineIntervals()
     setTimeout(() => clearInterval(timer), 240000)
