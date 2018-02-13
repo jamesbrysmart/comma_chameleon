@@ -3,7 +3,7 @@ import Quiz from './Quiz'
 import CommaGame from './CommaGame'
 import Score from './Score'
 import { getScores } from '../api'
-import AddScore from './AddScore'
+
 import {Helmet} from 'react-helmet'
 import StartGame from './StartGame'
 import Header from './Header'
@@ -21,10 +21,11 @@ class App extends React.Component {
       timer: 0,
       finalScore: 0,
       gameOver: false,
-      topScore: false,
+      isTopScore: false,
       topScores: [],
       beforeGame: true,
-      songPlaying:false
+      songPlaying:false,
+      showTopScores:false
       //commaListen: false
     }
 
@@ -39,18 +40,18 @@ class App extends React.Component {
     this.fetchScores = this.fetchScores.bind(this)
     this.renderScores = this.renderScores.bind(this)
     this.checkScore = this.checkScore.bind(this)
-    this.isTopScore = this.isTopScore.bind(this)
+    this.checkIfTopScore = this.checkIfTopScore.bind(this)
     this.refreshScores = this.refreshScores.bind(this)
     
   }
   
 
   addToScore() {
-    this.state.count += 5
+    this.state.count += 10
   }
 
   minusScore() {
-    this.state.count -= 2
+    this.state.count -= 3
   }
 
   addCommaScore() {
@@ -80,7 +81,9 @@ class App extends React.Component {
       timerRunning: true,
       beforeGame:false, 
       songPlaying:true,
-      gameOver: false
+      gameOver: false,
+      count:0,
+      timer:0
     })
     this.defineIntervals()
     setTimeout(() => clearInterval(timer), 240000)
@@ -114,22 +117,22 @@ class App extends React.Component {
   }
 
   checkScore() {
-    getScores(this.isTopScore)
+    getScores(this.checkIfTopScore)
   }
 
-  isTopScore(scores) {
+  checkIfTopScore(scores) {
     if (this.state.count>=scores[9].scores){
-    this.setState({topScore:true})
+    this.setState({isTopScore:true})
   }
   }
 
   refreshScores(){
     
-    this.setState({topScore:false})
+    this.setState({isTopScore:false})
     this.fetchScores()
-    console.log('ahoy')
   }
-  
+
+   
   componentWillMount() {
     this.fetchScores()
   }
@@ -138,11 +141,11 @@ class App extends React.Component {
   defineIntervals() {
     setTimeout(() => this.playCommaGame(), 5000)
     setTimeout(() => this.playQuiz(), 12000)
-    setTimeout(() => this.playCommaGame(),15000)
+    setTimeout(() => this.playCommaGame(),19000)
     //  setTimeout(() => this.playQuiz(),129000)
     //  setTimeout(() => this.playCommaGame(),170000)
     //  setTimeout(() => this.getResults(),170000)
-    setTimeout(() => this.getResults(), 20000)
+    setTimeout(() => this.getResults(), 25000)
     // console.log('hello')
     // this.playCommaGame()
   }
@@ -155,7 +158,7 @@ class App extends React.Component {
     
     return (
       <div className='app' style={style}>
-        <Header currentScore={this.state.count}/> 
+        <Header currentScore={this.state.count} timer={this.state.timer}/> 
         <div className = 'container'>
           <div className='game'>
             {this.state.beforeGame && <StartGame startGame={this.startGame}/>}
@@ -163,28 +166,15 @@ class App extends React.Component {
             {this.state.quizPlaying && <Quiz
               addToScore={this.addToScore} minusScore={this.minusScore} addCommaScore={this.addCommaScore} />}
             {this.state.commaGamePlaying && <CommaGame
-              addCommaScore={this.addCommaScore} />}
-            {this.state.gameOver && <Score score={this.state.count} topScores={this.state.topScores} startGame={this.startGame} />}
-            {this.state.topScore && <AddScore score={this.state.count} refreshScores={this.refreshScores}/>}
+              addCommaScore={this.addCommaScore} score={this.state.count}/>}
+            {this.state.gameOver && <Score score={this.state.count} topScores={this.state.topScores} startGame={this.startGame} isTopScore = {this.state.isTopScore} refreshScores ={this.refreshScores}/>}
+            
           </div> 
         </div>
       </div>
     )
   }
 }
-// function setTimer
-
-
-
-
-// // when comma is pressed, start game and song
-
-
-// function startCommaGame
-// when timer hits a certain number, play commagame
-
-
-
 
 
 

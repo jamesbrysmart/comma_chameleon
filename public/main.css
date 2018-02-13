@@ -1,29 +1,85 @@
-body {
-  display: flex;
-  justify-content: center;
 
-}
 .app{
-  height:100%;
-  width:1500px
+  flex:1;
+  font-family: 'Open Sans', sans-serif;
 }
 .header{
   display:flex;
-  justify-content:  space-around;
-  color:lightgreen;
-  width: auto;
-  justify-content: center;
+  flex-direction: 'row';
+  justify-content: space-around;
   background-color: white;
   height:150px;
   
 }
 
-button {
-  display: flex;
-  justify-content: center;
-  float: center;
-
+.title{
+  padding-top:10px;
+  font: 400 25px 'Pacifico', Helvetica, sans-serif; 
 }
+
+.startgamebox {
+  
+  margin-top:50px;
+  padding: 20px;
+  text-align: center
+}
+
+.topScores {
+  margin: 0
+}
+
+.answerOptions{
+  padding:30px;
+  margin-top:50px;
+  text-align: center;
+  font-size: 25px
+}
+
+.question {
+  text-align:center;
+  font-size: 30px
+}
+
+.commaGame {
+  margin-top:50px;
+  padding: 20px;
+  text-align: center
+}
+
+.startButton {
+  background-color:hsl(100, 60%, 70%);
+  padding: 15px;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  font-size: 20px;
+  width: 70%;
+  color: black;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  border-radius: 20px;
+}
+
+.commaButton {
+  background-color:hsl(100, 60%, 70%);
+  padding-bottom: 20px;
+  font-size: 200px;
+  width: 50%;
+  color: black;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  border-radius: 20px;
+}
+
+.playAgain{
+  background-color:hsl(100, 60%, 70%);
+  padding: 15px;
+  margin-top: px;
+  margin-bottom: 30px;
+  font-size: 20px;
+  width: 70%;
+  color: black;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  border-radius: 20px;
+}
+
 .container{
   max-width:1400px;
   margin: auto; 
@@ -37,20 +93,32 @@ button {
   padding-top:50px;
   }
 
+.addScore {
+  margin-top:80px;
+  margin-bottom: 50px
+}  
+
+.finalScore {
+  margin-top:-20px;
+  text-align: center
+}
+
 .game{
   padding:50px
 }
 
-img {
-  float: right;
-  max-width: 20%;
-  height: auto;
+.image {
+  max-height:150px
 }
 
 .answerOptions{
   list-style: none
 }
 
+.score {
+  padding-top: 20px;
+  font: 400 25px 'Pacifico', Helvetica, sans-serif;
+}
 
 
 

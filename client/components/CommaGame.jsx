@@ -20,6 +20,7 @@ class CommaGame extends React.Component {
 
   componentDidMount() {
     document.addEventListener('keydown', function(e){
+      console.log(e)
       console.log('nuj')
       if (e.key==',') {
         console.log('done')
@@ -31,9 +32,12 @@ class CommaGame extends React.Component {
 
   
 render() {
+  const style={
+    backgroundColor:`hsl(${this.props.score+100}, 60%, 70%)`
+  }
     return (
-      <div className='comma'>
-         <button onClick = {this.props.addCommaScore}> , </button>
+      <div className='commaGame'>
+         <button className='commaButton' style={style} onClick = {this.props.addCommaScore}> , </button>
         <h3> Now, press the comma button as fast as you can! </h3>
       </div>
     )

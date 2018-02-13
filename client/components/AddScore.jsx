@@ -23,8 +23,8 @@ class AddScore extends React.Component {
 
   render() {
     return (
-      <div>
-        <h2> You nailed it! Please submit your name below to be added to our Top Scores! </h2>
+      <div className='addScore'>
+        <h2> Boy George would be proud! Please submit your name below to be added to our Top Scores! </h2>
         <form onSubmit={this.addNewScore}>
           <label>
             Name:
