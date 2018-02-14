@@ -25,7 +25,7 @@ exports.seed = function(knex, Promise) {
         knex('questions').insert({id: 20017, question: "Select the correctly punctuated sentence", image_link: 'test5@gmail.com'}),
         knex('questions').insert({id: 20018, question: "Select the correctly punctuated sentence", image_link: 'test5@gmail.com'}),
         knex('questions').insert({id: 20019, question: "All of the following are characteristics of chameleons EXCEPT:", image_link: 'test5@gmail.com'}),
-        knex('questions').insert({id: 20020, question: "Native to Tanzania and Kenya, Jackson's chameleons were kept uncaged in the back yard of an American pet shop owner in 1972. These chameleons spread to a wide area and now most Jackson's chameleons that are caught in the wild come from this state. Which state is it?", image_link: 'test5@gmail.com'}),
+        knex('questions').insert({id: 20020, question: "Jackson's chameleons were kept uncaged in the back yard of an American pet shop owner in 1972. These chameleons spread to a wide area and now most Jackson's chameleons that are caught in the wild come from this state. Which state is it?", image_link: 'test5@gmail.com'}),
         knex('questions').insert({id: 20021, question: "All of the following statements about panther chameleons are true EXCEPT:", image_link: 'test5@gmail.com'}),
         knex('questions').insert({id: 20022, question: "All of the following statements about chameleons are true EXCEPT:", image_link: 'test5@gmail.com'}),
         knex('questions').insert({id: 20023, question: "Which species is the largest among chameleons?", image_link: 'test5@gmail.com'}),
