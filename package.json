@@ -10,7 +10,8 @@
     "debug": "nodemon --inspect server/index",
     "test": "jest --watch --noStackTrace",
     "start": "node server & webpack --watch",
-    "knex": "knex"
+    "knex": "knex",
+    "postinstall": "webpack && knex migrate:latest"
   },
   "babel": {
     "presets": [
@@ -23,6 +24,7 @@
     "express": "^4.16.2",
     "express-handlebars": "^3.0.0",
     "knex": "^0.14.2",
+    "pg": "^7.4.1",
     "react-helmet": "^5.2.0",
     "react-transition-group": "1.x",
     "sqlite3": "^3.1.13"
