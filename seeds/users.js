@@ -3,6 +3,7 @@ exports.seed = function(knex, Promise) {
   // Deletes ALL existing entries
   return knex('users').del()
     .then(function () {
+      console.log('about to seed useres')
       // Inserts seed entries
       return Promise.all([
         knex('users').insert({id: 10001, name: 'James', email: 'james.bryant18@gmail.com'}),

@@ -3,6 +3,7 @@ exports.seed = function(knex, Promise) {
   // Deletes ALL existing entries
   return knex('questions').del()
     .then(function () {
+      console.log('about to seed questions')
       // Inserts seed entries
       return Promise.all([
         knex('questions').insert({id: 20001, question: "Karma Chameleon is Culture Club's biggest hit. What year was it released?", image_link: 'james.bryant18@gmail.com'}),
